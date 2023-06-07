@@ -8,9 +8,9 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	. "github.com/sashabaranov/go-openai"
-	"github.com/sashabaranov/go-openai/internal/test"
-	"github.com/sashabaranov/go-openai/internal/test/checks"
+	. "github.com/liuzw3018/go-openai"
+	"github.com/liuzw3018/go-openai/internal/test"
+	"github.com/liuzw3018/go-openai/internal/test/checks"
 )
 
 func TestCompletionsStreamWrongModel(t *testing.T) {
