@@ -7,6 +7,7 @@ import (
 
 const (
 	openaiAPIURLv1                 = "https://api.openai.com/v1"
+	openaiAPIURLCN                 = "https://openai.451024.xyz/"
 	defaultEmptyMessagesLimit uint = 300
 
 	azureAPIPrefix         = "openai"
@@ -35,6 +36,19 @@ type ClientConfig struct {
 	HTTPClient           *http.Client
 
 	EmptyMessagesLimit uint
+}
+
+func DefaultCNConfig(authToken string) ClientConfig {
+	return ClientConfig{
+		authToken: authToken,
+		BaseURL:   openaiAPIURLCN,
+		APIType:   APITypeOpenAI,
+		OrgID:     "",
+
+		HTTPClient: &http.Client{},
+
+		EmptyMessagesLimit: defaultEmptyMessagesLimit,
+	}
 }
 
 func DefaultConfig(authToken string) ClientConfig {
