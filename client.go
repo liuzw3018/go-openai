@@ -25,8 +25,8 @@ func NewClient(authToken string) *Client {
 	return NewClientWithConfig(config)
 }
 
-func NewCNClient(authToken string) *Client {
-	config := DefaultCNConfig(authToken)
+func NewCNClient(authToken, baseURL string) *Client {
+	config := DefaultCNConfig(authToken, baseURL)
 	return NewClientWithConfig(config)
 }
 

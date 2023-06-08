@@ -38,10 +38,10 @@ type ClientConfig struct {
 	EmptyMessagesLimit uint
 }
 
-func DefaultCNConfig(authToken string) ClientConfig {
+func DefaultCNConfig(authToken, baseURL string) ClientConfig {
 	return ClientConfig{
 		authToken: authToken,
-		BaseURL:   openaiAPIURLCN,
+		BaseURL:   baseURL,
 		APIType:   APITypeOpenAI,
 		OrgID:     "",
 
@@ -81,14 +81,18 @@ func DefaultAzureConfig(apiKey, baseURL string) ClientConfig {
 	}
 }
 
-func (ClientConfig) String() string {
+func (*ClientConfig) String() string {
 	return "<OpenAI API ClientConfig>"
 }
 
-func (c ClientConfig) GetAzureDeploymentByModel(model string) string {
+func (c *ClientConfig) GetAzureDeploymentByModel(model string) string {
 	if c.AzureModelMapperFunc != nil {
 		return c.AzureModelMapperFunc(model)
 	}
 
 	return model
+}
+
+func (c *ClientConfig) SetBaseURL(baseUrl string) {
+	c.BaseURL = baseUrl
 }
